@@ -1,4 +1,5 @@
 import Image from "next/image";
+import OAuthAlert from "~/app/_components/oAuthAlert";
 import SigninForm from "~/app/_components/signin-form";
 
 export default async function SignInPage() {
@@ -19,6 +20,8 @@ export default async function SignInPage() {
                 DEV Community is a community of 1 amazing developer
             </p>
         </div>
+        
+        <OAuthAlert />
 
         <SigninForm />
 
