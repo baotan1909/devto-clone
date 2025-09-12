@@ -8,10 +8,10 @@ import "./src/env.js";
 const config = {
     images: {
       remotePatterns: [
-        {
-          protocol: "https",
-          hostname: "dev-to-uploads.s3.amazonaws.com",
-        },
+        { protocol: "https", hostname: "dev-to-uploads.s3.amazonaws.com" },
+        { protocol: "https", hostname: "cdn.discordapp.com" },
+        { protocol: "https", hostname: "avatars.githubusercontent.com" },
+        { protocol: "https", hostname: "lh3.googleusercontent.com" },
       ],
     },
   };
