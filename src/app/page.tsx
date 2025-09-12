@@ -58,6 +58,14 @@ export default async function Home() {
               >
                 {session ? "Sign out" : "Sign in"}
               </Link>
+
+              {session?.user?.id && (
+                <Link
+                  href={`/${session.user.id}`}
+                  className="rounded-full bg-blue-600 px-8 py-3 font-semibold text-white no-underline transition hover:bg-blue-700"
+                >
+                  Go to Profile
+                </Link>)}
             </div>
           </div>
 
