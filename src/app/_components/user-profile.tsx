@@ -12,7 +12,7 @@ export default function UserProfile({ id, isOwner }: { id: string; isOwner: bool
 
   return (
     <div className="min-h-screen bg-gray-50">
-        <div className="relative mx-auto mt-8 w-full max-w-5xl rounded-xl border border-gray-200 bg-white">
+        <div className="relative mx-auto mt-12 w-full max-w-5xl rounded-xl border border-gray-200 bg-white">
             <div className="absolute -top-10 left-1/2 -translate-x-1/2">
                 {user.image && (
                 <Image
