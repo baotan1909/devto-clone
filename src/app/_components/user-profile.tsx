@@ -11,8 +11,7 @@ export default function UserProfile({ id, isOwner }: { id: string; isOwner: bool
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-        <div className="h-40 w-full bg-black"/>
+    <>
         <div className="relative mx-auto -mt-16 w-full max-w-5xl rounded-xl border border-gray-200 bg-white">
             <div className="absolute -top-10 left-1/2 -translate-x-1/2">
                 {user.image && (
@@ -42,6 +41,6 @@ export default function UserProfile({ id, isOwner }: { id: string; isOwner: bool
                 </div>
             </div>
         </div>
-    </div>
+    </>
   );
 }
