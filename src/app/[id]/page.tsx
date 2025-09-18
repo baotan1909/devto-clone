@@ -1,6 +1,6 @@
-import UserProfile from "~/app/_components/user-profile";
-import UserStats from "../_components/user-stats";
-import UserBanner from "../_components/user-banner";
+import UserProfile from "~/app/_components/profile/user-profile";
+import UserStats from "../_components/profile/user-stats";
+import UserBanner from "../_components/profile/user-banner";
 import { auth } from "~/server/auth";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
