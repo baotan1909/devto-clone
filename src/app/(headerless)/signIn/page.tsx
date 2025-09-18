@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import OAuthAlert from "~/app/_components/oAuthAlert";
 import SigninForm from "~/app/_components/signin-form";
 
@@ -7,12 +8,14 @@ export default async function SignInPage() {
   return (
     <div className="flex flex-col gap-6">
         <div className="flex flex-col items-center gap-3 text-center">
-            <Image
-            src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/original_logo_0DliJcfsTcciZen38gX9.png"
-            alt="Dev Community Logo"
-            width={60}
-            height={48}
-            />
+            <Link href="/">            
+                <Image
+                src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/original_logo_0DliJcfsTcciZen38gX9.png"
+                alt="Dev Community Logo"
+                width={60}
+                height={48}
+                />
+            </Link>
             <h1 className="text-2xl font-bold text-gray-900">
                 Join the DEV community
             </h1>
