@@ -1,6 +1,6 @@
 'use client';
 
-import { useSearchParams } from "next/navigation";
+import { use } from "react";
 
 const ERROR_MESSAGES: Record<string, string> = {
     OAuthAccountNotLinked:
@@ -11,9 +11,9 @@ const ERROR_MESSAGES: Record<string, string> = {
     "Sign-in with the selected provider failed.\nPlease try again or choose another provider.",
 };
 
-export default function OAuthAlert() {
-    const params = useSearchParams();
-    const error = params.get('error');
+export default function OAuthAlert({searchParams} : {searchParams: Promise<{error?: string}>}) {
+    const params = use(searchParams);
+    const error = params.error;
 
     if (!error) return null;
 

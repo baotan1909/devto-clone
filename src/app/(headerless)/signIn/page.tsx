@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
+import { FaSpinner } from "react-icons/fa";
 import OAuthAlert from "~/app/_components/oAuthAlert";
 import SigninForm from "~/app/_components/signin-form";
 
-export default async function SignInPage() {
+export default async function SignInPage({searchParams} : {searchParams: Promise<{ error?: string }>}) {
 
   return (
     <div className="flex flex-col gap-6">
@@ -24,7 +26,9 @@ export default async function SignInPage() {
             </p>
         </div>
         
-        <OAuthAlert />
+        <Suspense fallback={<FaSpinner className="animate-spin text-gray-500 text-xl" />}>    
+            <OAuthAlert searchParams={searchParams}/>
+        </Suspense>
 
         <SigninForm />
 
