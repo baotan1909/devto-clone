@@ -4,9 +4,9 @@ import { FaHashtag, FaRegComments, FaRegNewspaper } from "react-icons/fa";
 
 export default function UserStats() {
     // placehodlder values
-    const postNum: number = 0;
-    const commentNum: number = 0;
-    const tagsFollowed: number = 0;
+    const postNum = 0;
+    const commentNum = 0;
+    const tagsFollowed = 0;
     
     const stats = [
         {label: "post published", value: postNum, icon: <FaRegNewspaper className="text-gray-500 w-5 h-5"/>},
