@@ -6,6 +6,7 @@ import { api } from "~/trpc/react";
 import { FaSearch, FaRegBell } from "react-icons/fa";
 import type { Session } from "next-auth";
 import { useState } from "react";
+import MenuItem from "./menuItem";
 
 export default function Header({ session }: { session: Session | null }) {
   const [user] = api.user.getById.useSuspenseQuery({ id: session!.user.id });
@@ -76,41 +77,16 @@ export default function Header({ session }: { session: Session | null }) {
               </button>
 
               {open && (
-                <div className="absolute right-0 mt-2 w-64 rounded-lg border border-gray-200 bg-white shadow-lg z-50">
-                  <ul>
-                    <li className="border-b border-gray-200">
-                      <Link href={`/${session.user.id}`} className={menuItem} onClick={() => setOpen(false)}>
-                        <p>{user?.name}</p>
-                        <p>{user?.id}</p>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/" className={menuItem} onClick={() => setOpen(false)}>
-                        Dashboard
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/" className={menuItem} onClick={() => setOpen(false)}>
-                        Create Post
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/" className={menuItem} onClick={() => setOpen(false)}>
-                        Reading List
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/" className={menuItem} onClick={() => setOpen(false)}>
-                        Settings
-                      </Link>
-                    </li>
-                    <li className="border-t border-gray-200">
-                      <Link href="/api/auth/signout" className={menuItem} onClick={() => setOpen(false)}>
-                        Sign out
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+                <ul className="absolute right-0 mt-2 w-72 rounded-lg border border-gray-200 bg-white shadow-lg z-50">
+                    <MenuItem href={`/${session.user.id}`} onClick={() => setOpen(false)} borderBottom>
+                      <p>{user?.name}</p>
+                      <p>{user?.id}</p>
+                    </MenuItem>
+                    <MenuItem href="/" onClick={() => setOpen(false)}>Dashboard</MenuItem>
+                    <MenuItem href="/" onClick={() => setOpen(false)}>Create Post</MenuItem>
+                    <MenuItem href="/" onClick={() => setOpen(false)}>Settings</MenuItem>
+                    <MenuItem href="/api/auth/signout" onClick={() => setOpen(false)} borderTop>Sign out</MenuItem>
+                </ul>
               )}
             </div>
           </div>
