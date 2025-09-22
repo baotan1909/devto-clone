@@ -9,7 +9,7 @@ import { useState } from "react";
 import MenuItem from "./menuItem";
 
 export default function Header({ session }: { session: Session | null }) {
-  const [user] = api.user.getById.useSuspenseQuery({ id: session!.user.id });
+  const [user] = session ? api.user.getById.useSuspenseQuery({ id: session.user.id }) : [null];
   const [open, setOpen] = useState(false);
   const menuItem = "block px-5 py-3 text-base text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:underline";
 
