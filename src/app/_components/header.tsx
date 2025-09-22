@@ -2,10 +2,16 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FaSearch } from "react-icons/fa";
+import { api } from "~/trpc/react";
+import { FaSearch, FaRegBell } from "react-icons/fa";
 import type { Session } from "next-auth";
+import { useState } from "react";
 
 export default function Header({ session }: { session: Session | null }) {
+  const [user] = api.user.getById.useSuspenseQuery({ id: session!.user.id });
+  const [open, setOpen] = useState(false);
+  const menuItem = "block px-5 py-3 text-base text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:underline";
+
   return (
     <header className="flex items-center justify-between bg-white px-6 py-4 shadow-sm">
       <Link href="/" className="flex items-center gap-2">
@@ -35,20 +41,79 @@ export default function Header({ session }: { session: Session | null }) {
 
       <div className="flex items-center gap-3">
         {session?.user?.id ? (
-          <>
+          <div className="flex items-center gap-4">
             <Link
-              href={`/${session.user.id}`}
-              className="rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-200"
-            >
-              Profile
+              href="/"
+              className="px-4 py-2 text-sm font-medium text-blue-600 border border-blue-600 rounded-md
+              transition hover:bg-blue-600 hover:text-white hover:underline">
+              Create Post
             </Link>
+
             <Link
-              href="/api/auth/signout"
-              className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
+              href="/"
+              className="p-2 text-black hover:bg-blue-50 hover:text-blue-800 transition-colors relative"
             >
-              Sign out
+              <FaRegBell className="w-5 h-5" />
             </Link>
-          </>
+            <div className="relative">              
+              <button
+                onClick={() => setOpen(!open)}
+                className="flex items-center focus:outline-none">
+                  {user?.image ? (
+                    <Image
+                    src={user.image}
+                    alt={user.name ?? "User"}
+                    width={36}
+                    height={36}
+                    className="rounded-full border border-gray-300 shadow-sm hover:ring-2 hover:ring-blue-500 transition"
+                    />
+                    
+                    ) : (
+                    <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium text-gray-600">
+                      {user?.name?.[0] ?? "?"}
+                    </div>
+                  )}
+              </button>
+
+              {open && (
+                <div className="absolute right-0 mt-2 w-64 rounded-lg border border-gray-200 bg-white shadow-lg z-50">
+                  <ul>
+                    <li className="border-b border-gray-200">
+                      <Link href={`/${session.user.id}`} className={menuItem} onClick={() => setOpen(false)}>
+                        <p>{user?.name}</p>
+                        <p>{user?.id}</p>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/" className={menuItem} onClick={() => setOpen(false)}>
+                        Dashboard
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/" className={menuItem} onClick={() => setOpen(false)}>
+                        Create Post
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/" className={menuItem} onClick={() => setOpen(false)}>
+                        Reading List
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/" className={menuItem} onClick={() => setOpen(false)}>
+                        Settings
+                      </Link>
+                    </li>
+                    <li className="border-t border-gray-200">
+                      <Link href="/api/auth/signout" className={menuItem} onClick={() => setOpen(false)}>
+                        Sign out
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
           ) : (
           <>
             <Link
