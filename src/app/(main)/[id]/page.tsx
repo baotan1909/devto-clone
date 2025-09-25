@@ -2,17 +2,23 @@ import UserProfile from "~/app/_components/profile/user-profile";
 import UserStats from "~/app/_components/profile/user-stats";
 import UserBanner from "~/app/_components/profile/user-banner";
 import { auth } from "~/server/auth";
+import { api } from "~/trpc/server";
+import { notFound } from "next/navigation";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
     const session = await auth();
     const { id } = await params;
-    const isOwner = session?.user.id === id
+    const isOwner = session?.user.id === id;
+    const user = await api.user.getById({id});
+    if (!user) {
+        notFound();
+    }
 
     return (
         <div className="bg-gray-50">
             <UserBanner/>
             <div className="mx-auto max-w-5xl px-4">
-                <UserProfile id={id} isOwner={isOwner} />
+                <UserProfile user={user} isOwner={isOwner} />
                 <div className="mt-3 grid grid-cols-1 md:grid-cols-4 gap-6">
                     <div className="md:col-span-1">
                         <UserStats/>

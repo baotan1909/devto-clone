@@ -1,15 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { api } from "~/trpc/react";
 
-export default function UserProfile({ id, isOwner }: { id: string; isOwner: boolean }) {
-  const [user] = api.user.getById.useSuspenseQuery({ id });
-  
-  if (!user) {
-    return <p className="text-gray-500 p-6">User not found.</p>;
-  }
+type User = {
+    id: string;
+    name: string | null;
+    image?: string | null;
+};
 
+export default function UserProfile({ user, isOwner }: { user: User; isOwner: boolean }) {
   return (
     <>
         <div className="relative mx-auto -mt-16 w-full max-w-5xl rounded-xl border border-gray-200 bg-white">
