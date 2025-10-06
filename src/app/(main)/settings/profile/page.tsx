@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button, SocialButton } from "~/app/_components/button";
 import { BsGithub, BsTwitterX } from "react-icons/bs";
 import { FaFacebookSquare } from "react-icons/fa";
 import { SiDevdotto } from "react-icons/si";
@@ -12,22 +13,18 @@ export default function Profile() {
                 {/* Social Connections */}
                 <section className="bg-white p-4">
                     <div className="flex flex-col gap-2">
-                        <button type="button" className="flex items-center justify-center gap-2 rounded-md bg-[#4267b2] px-4 py-2 text-center font-medium text-white hover:opacity-90">
-                            <FaFacebookSquare/>
+                        <SocialButton bgClass="bg-[#4267b2]" icon={<FaFacebookSquare />}>
                             Connect Facebook Account
-                        </button>
-                        <button type="button" className="flex items-center justify-center gap-2 rounded-md bg-[#0a3e4a] px-4 py-2 text-center font-medium text-white hover:opacity-90">
-                            <SiDevdotto/>
+                        </SocialButton>
+                        <SocialButton variant="social" bgClass="bg-[#0a3e4a]" icon={<SiDevdotto/>}>
                             Connect Forem Account
-                        </button>
-                        <button type="button" className="flex items-center justify-center gap-2 rounded-md bg-[#24292e] px-4 py-2 text-center font-medium text-white hover:opacity-90">
-                            <BsGithub/>
+                        </SocialButton>
+                        <SocialButton variant="social" bgClass="bg-[#24292e]" icon={<BsGithub/>}>
                             Connect GitHub Account
-                        </button>
-                        <button type="button" className="flex items-center justify-center gap-2 rounded-md bg-black px-4 py-2 text-center font-medium text-white hover:opacity-90">
-                            <BsTwitterX/>
+                        </SocialButton>
+                        <SocialButton variant="social" bgClass="bg-black" icon={<BsTwitterX/>}>
                             Connect Twitter (X) Account
-                        </button>
+                        </SocialButton>
                     </div>
                 </section>
 
@@ -167,9 +164,9 @@ export default function Profile() {
 
                 {/* Save Button */}
                 <div className="bg-white p-4">
-                    <button type="submit" className="rounded-md bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700">
+                    <Button type="submit" variant="primary" fullWidth>
                         Save Profile Information
-                    </button>
+                    </Button>
                 </div>
             </form>
         </>

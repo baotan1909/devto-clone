@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "../button";
 
 type User = {
     id: string;
@@ -33,9 +34,9 @@ export default function UserProfile({ user, isOwner }: { user: User; isOwner: bo
                         Edit profile
                     </Link>
                     ) : (
-                    <button className="rounded-lg bg-blue-600 px-5 py-2.5 text-white shadow hover:bg-blue-700">
+                    <Button variant="primary" size="lg" className="shadow">
                         Follow
-                    </button>
+                    </Button>
                     )}
                 </div>
 

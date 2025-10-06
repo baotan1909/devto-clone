@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Button } from "~/app/_components/button";
 import { api } from "~/trpc/react";
 import { FaSearch, FaRegBell } from "react-icons/fa";
 import type { Session } from "next-auth";
@@ -26,12 +27,7 @@ export default function Header({ session }: { session: Session | null }) {
 
       <div className="flex-1 px-6">
         <div className="flex items-center border border-gray-300 rounded-md w-full max-w-lg">
-          <button
-            type="button"
-            className="p-2 rounded-md text-gray-400 hover:bg-blue-200 hover:text-blue-600 cursor-pointer
-            transition-colors duration-200 flex items-center justify-center">
-          <FaSearch className="w-5 h-5" />
-          </button>
+        <Button className="hover:bg-blue-200 hover:text-blue-600" size="icon" variant="ghost" aria-label="Search" icon={<FaSearch className="w-5 h-5" />}/>
           <input
             type="text"
             placeholder="Search..."
@@ -57,25 +53,17 @@ export default function Header({ session }: { session: Session | null }) {
               <FaRegBell className="w-5 h-5" />
             </Link>
             <div className="relative">              
-              <button
-                onClick={() => setOpen(!open)}
-                className="flex items-center focus:outline-none">
-                  {user?.image ? (
-                    <Image
-                    src={user.image}
-                    alt={user.name ?? "User"}
-                    width={36}
-                    height={36}
-                    className="rounded-full border border-gray-300 shadow-sm hover:ring-2 hover:ring-blue-500 transition"
-                    />
-                    
-                    ) : (
-                    <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium text-gray-600">
-                      {user?.name?.[0] ?? "?"}
-                    </div>
-                  )}
-              </button>
-
+              <Button onClick={() => setOpen(!open)} variant="ghost" size="icon" className="p-0">
+                {user?.image ? (
+                  <Image src={user.image} alt={user.name ?? "User"} width={36} height={36}
+                  className="rounded-full border border-gray-300 shadow-sm hover:ring-2 hover:ring-blue-500 transition"
+                  />
+                  ) : (
+                  <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium text-gray-600">
+                    {user?.name?.[0] ?? "?"}
+                  </div>
+                )}
+              </Button>
               {open && (
                 <ul className="absolute right-0 mt-2 w-72 rounded-lg border border-gray-200 bg-white shadow-lg z-50">
                     <MenuItem href={`/${session.user.id}`} onClick={() => setOpen(false)} borderBottom>
