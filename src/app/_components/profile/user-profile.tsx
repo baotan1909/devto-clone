@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 type User = {
     id: string;
@@ -26,9 +27,16 @@ export default function UserProfile({ user, isOwner }: { user: User; isOwner: bo
 
             <div className="pt-14 pb-10 px-8">
                 <div className="flex justify-end">
+                    {isOwner ? (
+                    <Link href="/settings"
+                        className="rounded-lg bg-blue-600 px-5 py-2.5 text-white shadow hover:bg-blue-700 inline-block text-center cursor-pointer">
+                        Edit profile
+                    </Link>
+                    ) : (
                     <button className="rounded-lg bg-blue-600 px-5 py-2.5 text-white shadow hover:bg-blue-700">
-                        {isOwner ? "Edit profile" : "Follow"}
+                        Follow
                     </button>
+                    )}
                 </div>
 
                 <div className="mt-3 flex flex-col items-center text-center">

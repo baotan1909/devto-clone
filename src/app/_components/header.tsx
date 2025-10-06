@@ -84,7 +84,7 @@ export default function Header({ session }: { session: Session | null }) {
                     </MenuItem>
                     <MenuItem href="/" onClick={() => setOpen(false)}>Dashboard</MenuItem>
                     <MenuItem href="/" onClick={() => setOpen(false)}>Create Post</MenuItem>
-                    <MenuItem href="/" onClick={() => setOpen(false)}>Settings</MenuItem>
+                    <MenuItem href="/settings" onClick={() => setOpen(false)}>Settings</MenuItem>
                     <MenuItem href="/api/auth/signout" onClick={() => setOpen(false)} borderTop>Sign out</MenuItem>
                 </ul>
               )}
