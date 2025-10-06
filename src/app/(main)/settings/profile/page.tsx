@@ -96,7 +96,7 @@ export default function Profile() {
                         <div>
                             <label htmlFor="learning" className="block text-sm font-medium">Currently learning</label>
                             <p className="text-sm text-gray-600">
-                                What are you learning right now? What are the new tools and languages you're picking up?
+                                {` What are you learning right now? What are the new tools and languages you're picking up?`}
                             </p>
                             <textarea id="learning" rows={3} className="mt-1 w-full rounded-md border p-2"/>
                             <p className="text-xs text-gray-500">{/* Input length / 200 */}</p>
