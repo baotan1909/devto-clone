@@ -23,7 +23,6 @@ export function Button({
     isLoading = false,
     icon,
     iconPosition = "left",
-    bgClass,
     bgColor,
     fullWidth = false,
     className,
@@ -59,7 +58,7 @@ export function Button({
     };
 
     const mergedStyle = {
-        ...(style as React.CSSProperties),
+        ...(style ?? {}),
         ...(bgColor ? { backgroundColor: bgColor } : {}),
     };
   
@@ -85,14 +84,11 @@ export function Button({
       );
 }
 
-interface SocialButtonProps extends ButtonProps {}
-
 export function SocialButton({
     asChild = false,
     size = "md",
     isLoading = false,
     icon,
-    iconPosition = "left",
     bgClass,
     bgColor,
     fullWidth = false,
@@ -100,7 +96,7 @@ export function SocialButton({
     disabled,
     children,
     ...props
-}: SocialButtonProps) {
+}: ButtonProps) {
   const Comp = asChild ? Slot : "button";
 
   const isNeutral = !bgClass && !bgColor;
