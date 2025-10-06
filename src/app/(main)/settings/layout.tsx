@@ -9,13 +9,13 @@ export default async function SettingsLayout({ children }: Readonly<{ children: 
         redirect("/signIn");
     }
     return (
-        <div className="bg-gray-50 w-full min-h-screen flex flex-col">
+        <div className="bg-gray-100 w-full min-h-screen flex flex-col">
             <div className="flex justify-center p-4 flex-1">
-                <div className="grid grid-cols-[200px_1fr] w-[70%] bg-gray-50 min-h-full">
+                <div className="grid grid-cols-[200px_1fr] w-[70%] min-h-full">
                     {/* Navbar */}
                     <nav className="p-4">
                         <ul>
-                            <MenuItem href="/">Profile</MenuItem>
+                            <MenuItem href="./settings/profile">Profile</MenuItem>
                             <MenuItem href="/">Customization</MenuItem>
                             <MenuItem href="/">Notifications</MenuItem>
                             <MenuItem href="/">Account</MenuItem>
