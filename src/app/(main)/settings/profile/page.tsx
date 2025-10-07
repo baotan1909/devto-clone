@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button, SocialButton } from "~/app/_components/ui/button";
 import FormSection from "~/app/_components/ui/formSection";
+import { Input, TextArea } from "~/app/_components/ui/input";
 import { BsGithub, BsTwitterX } from "react-icons/bs";
 import { FaFacebookSquare } from "react-icons/fa";
 import { SiDevdotto } from "react-icons/si";
@@ -32,18 +33,9 @@ export default function Profile() {
                 {/* User Info */}
                 <FormSection title="User">
                     <div className="space-y-4">
-                        <div>
-                            <label htmlFor="name" className="block text-sm font-medium">Name</label>
-                            <input id="name" type="text" className="mt-1 w-full rounded-md border p-2"/>
-                        </div>
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium">Email</label>
-                            <input id="email" type="email" className="mt-1 w-full rounded-md border p-2"/>
-                        </div>
-                        <div>
-                            <label htmlFor="username" className="block text-sm font-medium">Username</label>
-                            <input id="username" type="text" className="mt-1 w-full rounded-md border p-2"/>
-                        </div>
+                        <Input id="name" type="text" label="Name"/>
+                        <Input id="email" type="email" label="Email"/>
+                        <Input id="username" type="text" label="Username"/>
                         <div>
                             <label htmlFor="profile" className="block text-sm font-medium">Profile Picture</label>
                             {/* Placeholder: User profile image */}
@@ -67,84 +59,38 @@ export default function Profile() {
                 {/* Basic Info */}
                 <FormSection title="Basic">
                     <div className="space-y-4">
-                        <div>
-                            <label htmlFor="website" className="block text-sm font-medium">Website URL</label>
-                            <input id="website" type="url" className="mt-1 w-full rounded-md border p-2"/>
-                            <p className="text-xs text-gray-500">{/* Input length / 100 */}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="location" className="block text-sm font-medium">Location</label>
-                            <input id="location" type="text" className="mt-1 w-full rounded-md border p-2"/>
-                            <p className="text-xs text-gray-500">{/* Input length / 100 */}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="bio" className="block text-sm font-medium">Bio</label>
-                            <textarea id="bio" rows={3} className="mt-1 w-full rounded-md border p-2"/>
-                            <p className="text-xs text-gray-500">{/* Input length / 200 */}</p>
-                        </div>
+                        <Input id="website" type="url" label="Website URL" maxLength={100}/>
+                        <Input id="location" type="text" label="Location" maxLength={100}/>
+                        <TextArea id="bio" rows={3} label="Bio" maxLength={200}/>
                     </div>
                 </FormSection>
 
                 {/* Coding Info */}
                 <FormSection title="Coding">
                     <div className="space-y-6">
-                        <div>
-                            <label htmlFor="learning" className="block text-sm font-medium">Currently learning</label>
-                            <p className="text-sm text-gray-600">
-                                {` What are you learning right now? What are the new tools and languages you're picking up?`}
-                            </p>
-                            <textarea id="learning" rows={3} className="mt-1 w-full rounded-md border p-2"/>
-                            <p className="text-xs text-gray-500">{/* Input length / 200 */}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="available" className="block text-sm font-medium">Available for</label>
-                            <p className="text-sm text-gray-600">
-                                What kinds of collaborations or discussions are you available for?
-                            </p>
-                            <textarea id="available" rows={3} className="mt-1 w-full rounded-md border p-2"/>
-                            <p className="text-xs text-gray-500">{/* Input length / 200 */}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="skills" className="block text-sm font-medium">Skills / Languages</label>
-                            <p className="text-sm text-gray-600">What tools and languages are you most experienced with?</p>
-                            <textarea id="skills" rows={3} placeholder="Any languages, frameworks, etc. to highlight?"
-                                className="mt-1 w-full rounded-md border p-2"/>
-                            <p className="text-xs text-gray-500">{/* Input length / 200 */}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="hacking" className="block text-sm font-medium">Currently hacking on</label>
-                            <p className="text-sm text-gray-600">What projects are currently occupying most of your time?</p>
-                            <textarea id="hacking" rows={3} className="mt-1 w-full rounded-md border p-2"/>
-                            <p className="text-xs text-gray-500">{/* Input length / 200 */}</p>
-                        </div>
+                        <TextArea id="learning" rows={3} label="Current Learning" maxLength={200}
+                            helperText={` What are you learning right now? What are the new tools and languages you're picking up?`}/>
+                        <TextArea id="available" rows={3} label="Available for" maxLength={200}
+                            helperText={`What kinds of collaborations or discussions are you available for? What's a good reason to say Hey! to you these days?`}/>
+                        <TextArea id="skills" rows={3} label="Skills / Languages" maxLength={200}
+                            placeholder="Any languages, frameworks, etc. to highlight?"
+                            helperText=" What tools and languages are you most experienced with? Are you specialized or more of a generalist?"/>
+                        <TextArea id="hacking" rows={3} label="Currently hacking on" maxLength={200}
+                            helperText="What projects are currently occupying most of your time?"/>
                     </div>
                 </FormSection>
 
                 {/* Personal Info */}
                 <FormSection title="Personal">
-                    <div>
-                        <label htmlFor="pronouns" className="block text-sm font-medium">Pronouns</label>
-                        <input id="pronouns" type="text" className="mt-1 w-full rounded-md border p-2"/>
-                        <p className="text-xs text-gray-500">{/* Input length / 100 */}</p>
-                    </div>
+                    <Input id="pronouns" label="Pronouns" maxLength={100}/>
                 </FormSection>
 
 
                 {/* Work */}
                 <FormSection title="Work">
                     <div className="space-y-4">
-                        <div>
-                            <label htmlFor="work" className="block text-sm font-medium">Work</label>
-                            <input id="work" type="text" placeholder="What do you do? Example: CEO at ACME Inc."
-                                className="mt-1 w-full rounded-md border p-2"/>
-                            <p className="text-xs text-gray-500">{/* Input length / 100 */}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="education" className="block text-sm font-medium">Education</label>
-                            <input id="education" type="text" placeholder="Where did you go to school?"
-                                className="mt-1 w-full rounded-md border p-2"/>
-                            <p className="text-xs text-gray-500">{/* Input length / 100 */}</p>
-                        </div>
+                        <Input id="work" label="Work" placeholder="What do you do? Example: CEO at ACME Inc." maxLength={100}/>
+                        <Input id="education" label="Educaiton" placeholder="Where did you go to school?" maxLength={100}/>
                     </div>
                 </FormSection>
 
