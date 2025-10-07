@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button, SocialButton } from "~/app/_components/ui/button";
+import FormSection from "~/app/_components/ui/formSection";
 import { BsGithub, BsTwitterX } from "react-icons/bs";
 import { FaFacebookSquare } from "react-icons/fa";
 import { SiDevdotto } from "react-icons/si";
@@ -11,7 +12,7 @@ export default function Profile() {
         <>
             <form className="space-y-10" action="#">
                 {/* Social Connections */}
-                <section className="bg-white p-4">
+                <FormSection>
                     <div className="flex flex-col gap-2">
                         <SocialButton bgClass="bg-[#4267b2]" icon={<FaFacebookSquare />}>
                             Connect Facebook Account
@@ -26,11 +27,10 @@ export default function Profile() {
                             Connect Twitter (X) Account
                         </SocialButton>
                     </div>
-                </section>
+                </FormSection>
 
                 {/* User Info */}
-                <section className="bg-white p-4">
-                    <h2 className="mb-4 text-xl font-semibold">User</h2>
+                <FormSection title="User">
                     <div className="space-y-4">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium">Name</label>
@@ -62,11 +62,10 @@ export default function Profile() {
                             </div>
                         </div>
                     </div>
-                </section>
+                </FormSection>
 
                 {/* Basic Info */}
-                <section className="bg-white p-4">
-                    <h2 className="mb-4 text-xl font-semibold">Basic</h2>
+                <FormSection title="Basic">
                     <div className="space-y-4">
                         <div>
                             <label htmlFor="website" className="block text-sm font-medium">Website URL</label>
@@ -84,11 +83,10 @@ export default function Profile() {
                             <p className="text-xs text-gray-500">{/* Input length / 200 */}</p>
                         </div>
                     </div>
-                </section>
+                </FormSection>
 
                 {/* Coding Info */}
-                <section className="bg-white p-4">
-                    <h2 className="mb-4 text-xl font-semibold">Coding</h2>
+                <FormSection title="Coding">
                     <div className="space-y-6">
                         <div>
                             <label htmlFor="learning" className="block text-sm font-medium">Currently learning</label>
@@ -120,21 +118,20 @@ export default function Profile() {
                             <p className="text-xs text-gray-500">{/* Input length / 200 */}</p>
                         </div>
                     </div>
-                </section>
+                </FormSection>
 
                 {/* Personal Info */}
-                <section className="bg-white p-4">
-                    <h2 className="mb-4 text-xl font-semibold">Personal</h2>
+                <FormSection title="Personal">
                     <div>
                         <label htmlFor="pronouns" className="block text-sm font-medium">Pronouns</label>
                         <input id="pronouns" type="text" className="mt-1 w-full rounded-md border p-2"/>
                         <p className="text-xs text-gray-500">{/* Input length / 100 */}</p>
                     </div>
-                </section>
+                </FormSection>
+
 
                 {/* Work */}
-                <section className="bg-white p-4">
-                    <h2 className="mb-4 text-xl font-semibold">Work</h2>
+                <FormSection title="Work">
                     <div className="space-y-4">
                         <div>
                             <label htmlFor="work" className="block text-sm font-medium">Work</label>
@@ -149,25 +146,24 @@ export default function Profile() {
                             <p className="text-xs text-gray-500">{/* Input length / 100 */}</p>
                         </div>
                     </div>
-                </section>
+                </FormSection>
 
                 {/* Branding */}
-                <section className="bg-white p-4">
-                    <h2 className="mb-4 text-xl font-semibold">Branding</h2>
+                <FormSection title="Branding">
                     <label htmlFor="brandColor" className="block text-sm font-medium">Brand color</label>
                     <p className="text-sm text-gray-600">Used for backgrounds, borders, etc.</p>
                     <div className="mt-2 flex items-center gap-2">
                         <input id="brandColor" type="color" className="h-10 w-14 cursor-pointer rounded-md border"/>
                         <input type="text" placeholder="#000000" className="w-24 rounded-md border p-2 text-sm"/>
                     </div>
-                </section>
+                </FormSection>
 
                 {/* Save Button */}
-                <div className="bg-white p-4">
+                <FormSection>
                     <Button type="submit" variant="primary" fullWidth>
                         Save Profile Information
                     </Button>
-                </div>
+                </FormSection>
             </form>
         </>
   );
