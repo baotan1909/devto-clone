@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Button, SocialButton } from "~/app/_components/ui/button";
 import FormSection from "~/app/_components/ui/formSection";
-import { Input, TextArea } from "~/app/_components/ui/input";
+import { Input, TextArea, Checkbox } from "~/app/_components/ui/input";
 import { BsGithub, BsTwitterX } from "react-icons/bs";
 import { FaFacebookSquare } from "react-icons/fa";
 import { SiDevdotto } from "react-icons/si";
@@ -35,6 +35,7 @@ export default function Profile() {
                     <div className="space-y-4">
                         <Input id="name" type="text" label="Name" maxLength={30}/>
                         <Input id="email" type="email" label="Email" maxLength={50}/>
+                        <Checkbox id="display_email_on_profile" name="display_email_on_profile" label="Display email on profile"/>
                         <Input id="username" type="text" label="Username" maxLength={30}/>
                         <div>
                             <label htmlFor="profile" className="block text-sm font-medium">Profile Picture</label>
