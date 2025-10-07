@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button, SocialButton } from "~/app/_components/ui/button";
 import FormSection from "~/app/_components/ui/formSection";
 import { Input, TextArea, Checkbox } from "~/app/_components/ui/input";
+import ColorPicker from "~/app/_components/ui/colorPicker";
 import { BsGithub, BsTwitterX } from "react-icons/bs";
 import { FaFacebookSquare } from "react-icons/fa";
 import { SiDevdotto } from "react-icons/si";
@@ -97,12 +98,7 @@ export default function Profile() {
 
                 {/* Branding */}
                 <FormSection title="Branding">
-                    <label htmlFor="brandColor" className="block text-sm font-medium">Brand color</label>
-                    <p className="text-sm text-gray-600">Used for backgrounds, borders, etc.</p>
-                    <div className="mt-2 flex items-center gap-2">
-                        <input id="brandColor" type="color" className="h-10 w-14 cursor-pointer rounded-md border"/>
-                        <input type="text" placeholder="#000000" className="w-24 rounded-md border p-2 text-sm"/>
-                    </div>
+                    <ColorPicker id="brandColor" label="Brand color" helperText="Used for backgrounds, borders etc."/>
                 </FormSection>
 
                 {/* Save Button */}
