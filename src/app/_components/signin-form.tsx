@@ -4,7 +4,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { BsDiscord, BsGithub } from "react-icons/bs";
-import { SocialButton } from "~/app/_components/button";
+import { SocialButton } from "~/app/_components/ui/button";
 
 export default function SigninForm() {
   const [loading, setLoading] = useState<string | null>(null);

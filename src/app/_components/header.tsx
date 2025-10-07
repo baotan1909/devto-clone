@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "~/app/_components/button";
+import { Button } from "~/app/_components/ui/button";
 import { api } from "~/trpc/react";
 import { FaSearch, FaRegBell } from "react-icons/fa";
 import type { Session } from "next-auth";

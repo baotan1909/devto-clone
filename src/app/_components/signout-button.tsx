@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { signOut } from "next-auth/react";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 
 export default function SignOutButton() {
     const [loading, setLoading] = useState(false);

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button, SocialButton } from "~/app/_components/button";
+import { Button, SocialButton } from "~/app/_components/ui/button";
 import { BsGithub, BsTwitterX } from "react-icons/bs";
 import { FaFacebookSquare } from "react-icons/fa";
 import { SiDevdotto } from "react-icons/si";
