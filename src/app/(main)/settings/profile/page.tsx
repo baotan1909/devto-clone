@@ -33,9 +33,9 @@ export default function Profile() {
                 {/* User Info */}
                 <FormSection title="User">
                     <div className="space-y-4">
-                        <Input id="name" type="text" label="Name"/>
-                        <Input id="email" type="email" label="Email"/>
-                        <Input id="username" type="text" label="Username"/>
+                        <Input id="name" type="text" label="Name" maxLength={30}/>
+                        <Input id="email" type="email" label="Email" maxLength={50}/>
+                        <Input id="username" type="text" label="Username" maxLength={30}/>
                         <div>
                             <label htmlFor="profile" className="block text-sm font-medium">Profile Picture</label>
                             {/* Placeholder: User profile image */}
@@ -59,38 +59,38 @@ export default function Profile() {
                 {/* Basic Info */}
                 <FormSection title="Basic">
                     <div className="space-y-4">
-                        <Input id="website" type="url" label="Website URL" maxLength={100}/>
-                        <Input id="location" type="text" label="Location" maxLength={100}/>
-                        <TextArea id="bio" rows={3} label="Bio" maxLength={200}/>
+                        <Input id="website" type="url" label="Website URL" maxLength={100} showlength/>
+                        <Input id="location" type="text" label="Location" maxLength={100} showlength/>
+                        <TextArea id="bio" rows={3} label="Bio" maxLength={200} showlength/>
                     </div>
                 </FormSection>
 
                 {/* Coding Info */}
                 <FormSection title="Coding">
                     <div className="space-y-6">
-                        <TextArea id="learning" rows={3} label="Current Learning" maxLength={200}
+                        <TextArea id="learning" rows={3} label="Current Learning" maxLength={200} showlength
                             helperText={` What are you learning right now? What are the new tools and languages you're picking up?`}/>
-                        <TextArea id="available" rows={3} label="Available for" maxLength={200}
+                        <TextArea id="available" rows={3} label="Available for" maxLength={200} showlength
                             helperText={`What kinds of collaborations or discussions are you available for? What's a good reason to say Hey! to you these days?`}/>
-                        <TextArea id="skills" rows={3} label="Skills / Languages" maxLength={200}
+                        <TextArea id="skills" rows={3} label="Skills / Languages" maxLength={200} showlength
                             placeholder="Any languages, frameworks, etc. to highlight?"
                             helperText=" What tools and languages are you most experienced with? Are you specialized or more of a generalist?"/>
-                        <TextArea id="hacking" rows={3} label="Currently hacking on" maxLength={200}
+                        <TextArea id="hacking" rows={3} label="Currently hacking on" maxLength={200} showlength
                             helperText="What projects are currently occupying most of your time?"/>
                     </div>
                 </FormSection>
 
                 {/* Personal Info */}
                 <FormSection title="Personal">
-                    <Input id="pronouns" label="Pronouns" maxLength={100}/>
+                    <Input id="pronouns" label="Pronouns" maxLength={100} showlength/>
                 </FormSection>
 
 
                 {/* Work */}
                 <FormSection title="Work">
                     <div className="space-y-4">
-                        <Input id="work" label="Work" placeholder="What do you do? Example: CEO at ACME Inc." maxLength={100}/>
-                        <Input id="education" label="Educaiton" placeholder="Where did you go to school?" maxLength={100}/>
+                        <Input id="work" label="Work" placeholder="What do you do? Example: CEO at ACME Inc." maxLength={100} showlength/>
+                        <Input id="education" label="Educaiton" placeholder="Where did you go to school?" maxLength={100} showlength/>
                     </div>
                 </FormSection>
 

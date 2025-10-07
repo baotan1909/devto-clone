@@ -10,9 +10,10 @@ const showLengthClass = "text-xs text-gray-400 mt-0.5 text-right";
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     label?: string;
     helperText?: string;
+    showlength?: boolean;
 }
 
-export function Input({id, label, helperText, placeholder, value: externalValue, onChange: externalOnChange, maxLength, ...props}: InputProps) {
+export function Input({id, label, helperText, showlength, placeholder, value: externalValue, onChange: externalOnChange, maxLength, ...props}: InputProps) {
     const [value, setValue] = useState(externalValue?.toString() ?? "");
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
@@ -32,7 +33,7 @@ export function Input({id, label, helperText, placeholder, value: externalValue,
                 className={inputClass}
                 {...props}
             />
-            {maxLength && (
+            {showlength && (
                 <p className={showLengthClass}>
                     {`${(value?.toString().length ?? 0)} / ${maxLength}`}
                 </p>
@@ -44,9 +45,10 @@ export function Input({id, label, helperText, placeholder, value: externalValue,
 interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     label?: string;
     helperText?: string;
+    showlength?: boolean;
 }
 
-export function TextArea({id, label, helperText, value: externalValue, onChange: externalOnChange, maxLength, placeholder, ...props}: TextAreaProps) {
+export function TextArea({id, label, helperText, showlength, value: externalValue, onChange: externalOnChange, maxLength, placeholder, ...props}: TextAreaProps) {
     const [value, setValue] = useState(externalValue?.toString() ?? "");
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setValue(e.target.value);
@@ -66,7 +68,7 @@ export function TextArea({id, label, helperText, value: externalValue, onChange:
                 className={inputClass}
                 {...props}
             />
-            {maxLength && (
+            {showlength && (
                 <p className={showLengthClass}>
                     {`${(value?.toString().length ?? 0)} / ${maxLength}`}
                 </p>
