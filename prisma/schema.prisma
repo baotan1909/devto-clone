@@ -63,7 +63,7 @@ model User {
     accounts                 Account[]
     sessions                 Session[]
     posts                    Post[]
-    display_email_on_profile Boolean? 
+    display_email_on_profile Boolean? @default(false)
     website_url              String?  @db.VarChar(100)
     location                 String?  @db.VarChar(100)
     bio                      String?  @db.VarChar(200)
@@ -74,7 +74,7 @@ model User {
     pronouns                 String?  @db.VarChar(100)
     work                     String?  @db.VarChar(100)
     education                String?  @db.VarChar(100)
-    brand_color              String?  @db.VarChar(7)
+    brand_color              String?  @db.VarChar(7) @default("#000000")
 }
 
 model VerificationToken {
