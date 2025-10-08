@@ -1,5 +1,6 @@
 import UserProfile from "~/app/_components/profile/user-profile";
 import UserStats from "~/app/_components/profile/user-stats";
+import UserCodingInfo from "~/app/_components/profile/user-coding";
 import UserBanner from "~/app/_components/profile/user-banner";
 import { auth } from "~/server/auth";
 import { api } from "~/trpc/server";
@@ -13,14 +14,19 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
     if (!user) {
         notFound();
     }
+    const {brand_color, skills, learning, hacking, available_for} = user;
 
-    return (
+    return (    
         <div className="bg-gray-50">
-            <UserBanner brandColor={user.brand_color}/>
+            <UserBanner brandColor={brand_color}/>
             <div className="mx-auto max-w-5xl px-4">
                 <UserProfile user={user} isOwner={isOwner} />
                 <div className="mt-3 grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div className="md:col-span-1">
+                    <div className="md:col-span-1 flex flex-col gap-4">
+                        {skills && (<UserCodingInfo title="Skills/Languages" content={skills}/>)}
+                        {learning && (<UserCodingInfo title="Currently learning" content={learning}/>)}
+                        {hacking && (<UserCodingInfo title="Currently hacking on" content={hacking}/>)}
+                        {available_for && (<UserCodingInfo title="Available for" content={available_for}/>)}
                         <UserStats/>
                     </div>
                     <div className="md:col-span-3">
