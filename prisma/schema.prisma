@@ -55,14 +55,26 @@ model Session {
 }
 
 model User {
-    id            String    @id @default(cuid())
-    name          String?
-    email         String?   @unique
-    emailVerified DateTime?
-    image         String?
-    accounts      Account[]
-    sessions      Session[]
-    posts         Post[]
+    id                       String   @id @default(cuid())
+    name                     String?
+    email                    String?  @unique
+    emailVerified            DateTime?
+    image                    String?
+    accounts                 Account[]
+    sessions                 Session[]
+    posts                    Post[]
+    display_email_on_profile Boolean? 
+    website_url              String?  @db.VarChar(100)
+    location                 String?  @db.VarChar(100)
+    bio                      String?  @db.VarChar(200)
+    learning                 String?  @db.VarChar(200)
+    available_for            String?  @db.VarChar(200)
+    skills                   String?  @db.VarChar(200)
+    hacking                  String?  @db.VarChar(200)
+    pronouns                 String?  @db.VarChar(100)
+    work                     String?  @db.VarChar(100)
+    education                String?  @db.VarChar(100)
+    brand_color              String?  @db.VarChar(7)
 }
 
 model VerificationToken {
