@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
     return (
         <div className="bg-gray-50">
-            <UserBanner/>
+            <UserBanner brandColor={user.brand_color}/>
             <div className="mx-auto max-w-5xl px-4">
                 <UserProfile user={user} isOwner={isOwner} />
                 <div className="mt-3 grid grid-cols-1 md:grid-cols-4 gap-6">

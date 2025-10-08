@@ -1,7 +1,13 @@
 "use client";
 
-export default function UserBanner() {
-    return (
-        <div className="h-40 w-full bg-black"/>
-    )
+interface UserBannerProps {brandColor?: string | null;}
+
+export default function UserBanner({ brandColor }: UserBannerProps) {
+  const color = brandColor ?? "#000000";
+  return (
+    <div
+      className="h-40 w-full"
+      style={{ backgroundColor: color }}
+    />
+  );
 }
