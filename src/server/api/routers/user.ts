@@ -14,6 +14,7 @@ export const userRouter = createTRPCRouter({
                 select: {
                     id: true,
                     name: true,
+                    email: true,
                     image: true,
                     display_email_on_profile: true,
                     website_url: true,
@@ -37,6 +38,7 @@ export const userRouter = createTRPCRouter({
             select: {
                 id: true,
                 name: true,
+                email: true,
                 image: true,
                 display_email_on_profile: true,
                 website_url: true,
