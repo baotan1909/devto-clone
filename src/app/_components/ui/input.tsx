@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import InputLabel from "./label";
 
 const helperClass = "text-sm text-gray-600";
@@ -95,4 +96,51 @@ export function Checkbox({id, name, label, checked: externalChecked, value, onCh
             <span>{label}</span>
         </label>
     )
+}
+
+interface ImageInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    label?: string;
+    helperText?: string;
+    defaultImage?: string | null;
+    showPreview?: boolean;
+}
+
+export function ImageInput({ id, label, helperText, name, defaultImage, showPreview = true, onChange: externalOnChange, ...props}: ImageInputProps) {
+    const [preview, setPreview] = useState<string | null>(null);
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            if (preview) URL.revokeObjectURL(preview);
+                setPreview(URL.createObjectURL(file));
+            }
+        if (externalOnChange) externalOnChange(e);
+    };
+
+    useEffect(() => {
+        return () => {
+            if (preview) URL.revokeObjectURL(preview);
+        };
+    }, [preview]);
+
+    return (
+        <div className="mb-4">
+            <InputLabel htmlFor={id} label={label} />
+            {helperText && (<p className="text-sm text-gray-600">{helperText}</p>)}
+            <div className="flex items-center gap-3 mt-1">
+                {showPreview && (<Image
+                src={ preview || defaultImage || "https://i.imgur.com/AdvTDlI.jpeg"}
+                alt="Profile preview" width={48} height={48}
+                className="rounded-full border shrink-0 object-cover"/>)}
+
+                <div className="flex-1">
+                    <input id={id} name={name} type="file" accept="image/*" onChange={handleFileChange}
+                    className="w-full text-sm text-gray-600 cursor-pointer border border-gray-300 rounded-md py-4 px-3
+                    file:mr-4 file:rounded-md file:border-0 file:bg-gray-100 file:px-3 file:py-1.5
+                    file:text-sm file:font-medium file:text-gray-700 hover:file:bg-gray-200"
+                    {...props}/>
+                </div>
+            </div>
+        </div>
+    );
 }

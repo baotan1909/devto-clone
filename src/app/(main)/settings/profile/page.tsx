@@ -1,7 +1,6 @@
-import Image from "next/image";
 import { Button, SocialButton } from "~/app/_components/ui/button";
 import FormSection from "~/app/_components/ui/formSection";
-import { Input, TextArea, Checkbox } from "~/app/_components/ui/input";
+import { Input, TextArea, Checkbox, ImageInput } from "~/app/_components/ui/input";
 import ColorPicker from "~/app/_components/ui/colorPicker";
 import { BsGithub, BsTwitterX } from "react-icons/bs";
 import { FaFacebookSquare } from "react-icons/fa";
@@ -50,23 +49,7 @@ export default async function Profile() {
                         <Checkbox id="display_email_on_profile" name="display_email_on_profile"
                         checked={!!display_email_on_profile} label="Display email on profile"/>
                         <Input id="username" type="text" label="Username" maxLength={30}/>
-                        <div>
-                            <label htmlFor="profile" className="block text-sm font-medium">Profile Picture</label>
-                            {/* Placeholder: User profile image */}
-                            <div className="flex gap-3">
-                                <Image src={image ?? "https://i.imgur.com/AdvTDlI.jpeg"} alt="Profile preview" width={48} height={48}
-                                    className="mt-2 rounded-full border"/>
-                                <div className="mt-2 flex items-center gap-3">
-                                    <button type="button" className="rounded-md border px-3 py-1 text-sm hover:bg-gray-50">
-                                        Choose File
-                                    </button>
-                                    <p className="text-sm text-gray-500">
-                                        {/* {imageLink ? imageLink : "No file chosen"} */}
-                                        No file chosen
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        <ImageInput id="profile_image" label="Profile Picture" defaultImage={image}/>
                     </div>
                 </FormSection>
 
