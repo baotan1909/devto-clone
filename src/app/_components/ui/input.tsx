@@ -129,7 +129,7 @@ export function ImageInput({ id, label, helperText, name, defaultImage, showPrev
             {helperText && (<p className="text-sm text-gray-600">{helperText}</p>)}
             <div className="flex items-center gap-3 mt-1">
                 {showPreview && (<Image
-                src={ preview || defaultImage || "https://i.imgur.com/AdvTDlI.jpeg"}
+                src={preview ?? defaultImage ?? "https://i.imgur.com/AdvTDlI.jpeg"}
                 alt="Profile preview" width={48} height={48}
                 className="rounded-full border shrink-0 object-cover"/>)}
 
