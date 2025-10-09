@@ -9,18 +9,18 @@ import { api } from "~/trpc/server";
 import { redirect } from "next/navigation";
 
 export default async function Profile() {
-  const user = await api.user.getCurrentUser();
-  if (!user) redirect("/");
-  const {
-    name, image,
-    website_url, location, bio,
-    display_email_on_profile, email,
-    learning, available_for, skills, hacking,
-    pronouns, work, education,
-    brand_color,
-  } = user;
+    const user = await api.user.getCurrentUser();
+    if (!user) redirect("/");
+    const {
+        name, image,
+        website_url, location, bio,
+        display_email_on_profile, email,
+        learning, available_for, skills, hacking,
+        pronouns, work, education,
+        brand_color,
+    } = user;
   
-  return (
+    return (
         <>
             <form className="space-y-10" action="#">
                 {/* Social Connections */}
@@ -105,5 +105,5 @@ export default async function Profile() {
                 </FormSection>
             </form>
         </>
-  );
+    );
 }
