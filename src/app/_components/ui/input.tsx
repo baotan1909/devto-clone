@@ -79,11 +79,18 @@ export function TextArea({id, label, helperText, showlength, value: externalValu
 
 interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {label: string;}
 
-export function Checkbox({id, name, label, checked, value, onChange, ...props}: CheckboxProps) {
+export function Checkbox({id, name, label, checked: externalChecked, value, onChange: externalOnChange, ...props}: CheckboxProps) {
+    const [checked, setChecked] = useState(!!externalChecked);
+    
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setChecked(e.target.checked);
+        if (externalOnChange) externalOnChange(e);
+    };
+    
     return(
         <label htmlFor={id} className="flex items-center gap-2 mb-3 font-medium hover:bg-gray-100">
             <input type="hidden" name={name} value="0" autoComplete="off" />
-            <input id={id} name={name} type="checkbox" value={value} checked={checked} onChange={onChange} {...props}
+            <input id={id} name={name} type="checkbox" value={value} checked={checked} onChange={handleChange} {...props}
                 className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"/>
             <span>{label}</span>
         </label>
